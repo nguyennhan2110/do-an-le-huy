@@ -11,6 +11,7 @@ namespace timdothatlac.Controllers
 {
     public class LoginController : Controller
     {
+
         public LoginUserSession userSession = new LoginUserSession();
 
         // GET: Login
@@ -40,8 +41,8 @@ namespace timdothatlac.Controllers
                     if (result == 1)
                     {
                         var user = dao.GetById(model.MailUser);
-                        userSession.MailUser = user.Email;
                         userSession.MaUser = user.MaTaiKhoan;
+                        userSession.MailUser = user.Email;
                         userSession.TenUser = user.Ten;
                         userSession.QuyenUser = user.MaQuyen;
 
@@ -53,8 +54,6 @@ namespace timdothatlac.Controllers
                         ModelState.AddModelError("", "Email hoặc mật khẩu không chính xác!");
                     }
                 }
-
-
 
             }
             return View("Index");

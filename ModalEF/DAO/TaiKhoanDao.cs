@@ -19,14 +19,14 @@ namespace ModalEF.DAO
         //Đăng nhập
         public int Login(string userMail, string passWord)
         {
-            var result = db.TaiKhoans.SingleOrDefault(x => x.Email == userMail);
+            var result = db.TaiKhoans.SingleOrDefault(x => x.Email.Contains(userMail));
             if (result == null)
             {
                 return 0;
             }
             else
             {
-                if (result.MatKhau == passWord)
+                if (result.MatKhau.Contains(passWord))
                 {
 
                     return 1;
