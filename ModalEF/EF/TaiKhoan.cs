@@ -30,7 +30,7 @@ namespace ModalEF.EF
         [StringLength(50)]
         public string Ten { get; set; }
 
-        public bool? GioiTinh { get; set; }
+        public bool GioiTinh { get; set; }
 
         [StringLength(50)]
         public string Email { get; set; }
