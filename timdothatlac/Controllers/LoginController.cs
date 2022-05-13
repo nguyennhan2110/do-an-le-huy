@@ -47,7 +47,12 @@ namespace timdothatlac.Controllers
                         userSession.QuyenUser = user.MaQuyen;
 
                         Session.Add(Constant.USER_SESSION, userSession);
-                        return RedirectToAction("Index", "Home");
+                        if (user.MaQuyen.ToString().Contains("1"))
+                        {
+                            return RedirectToAction("Index", "HomeDashboard", routeValues: new { Area = "Admin" });
+                        }
+                        else { return RedirectToAction("Index", "Home"); }
+
                     }
                     else if (result == 0)
                     {
