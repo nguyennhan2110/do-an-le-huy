@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeDashboardController.cs" />
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\LoginUserSession.cs" />
@@ -140,6 +141,64 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Assets\css\cs-skin-elastic.css" />
+    <Content Include="Areas\Admin\Assets\css\lib\chosen\chosen-sprite%402x.png" />
+    <Content Include="Areas\Admin\Assets\css\lib\chosen\chosen-sprite.png" />
+    <Content Include="Areas\Admin\Assets\css\lib\chosen\chosen.css" />
+    <Content Include="Areas\Admin\Assets\css\lib\chosen\chosen.min.css" />
+    <Content Include="Areas\Admin\Assets\css\lib\datatable\buttons.bootstrap.min.css" />
+    <Content Include="Areas\Admin\Assets\css\lib\datatable\buttons.dataTables.min.css" />
+    <Content Include="Areas\Admin\Assets\css\lib\datatable\dataTables.bootstrap.min.css" />
+    <Content Include="Areas\Admin\Assets\css\lib\vector-map\jqvmap.min.css" />
+    <Content Include="Areas\Admin\Assets\css\style.css" />
+    <Content Include="Areas\Admin\Assets\fonts\icomoon\icomoon.svg" />
+    <Content Include="Areas\Admin\Assets\fonts\icomoon\index.html" />
+    <Content Include="Areas\Admin\Assets\images\.gitignore" />
+    <Content Include="Areas\Admin\Assets\images\admin.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatar\1.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatar\2.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatar\3.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatar\4.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatar\5.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatar\6.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatar\64-1.jpg" />
+    <Content Include="Areas\Admin\Assets\images\avatar\64-2.jpg" />
+    <Content Include="Areas\Admin\Assets\images\favicon.png" />
+    <Content Include="Areas\Admin\Assets\images\logo.png" />
+    <Content Include="Areas\Admin\Assets\images\logo2.png" />
+    <Content Include="Areas\Admin\Assets\js\dashboard.js" />
+    <Content Include="Areas\Admin\Assets\js\init\chartjs-init.js" />
+    <Content Include="Areas\Admin\Assets\js\init\datatables-init.js" />
+    <Content Include="Areas\Admin\Assets\js\init\flot-chart-init.js" />
+    <Content Include="Areas\Admin\Assets\js\init\fullcalendar-init.js" />
+    <Content Include="Areas\Admin\Assets\js\init\gmap-init.js" />
+    <Content Include="Areas\Admin\Assets\js\init\peitychart-init.js" />
+    <Content Include="Areas\Admin\Assets\js\init\vector-init.js" />
+    <Content Include="Areas\Admin\Assets\js\init\weather-init.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\chosen\chosen.jquery.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\chosen\chosen.jquery.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\chosen\chosen.proto.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\chosen\chosen.proto.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\buttons.bootstrap.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\buttons.colVis.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\buttons.flash.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\buttons.html5.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\buttons.print.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\dataTables.bootstrap.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\dataTables.buttons.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\datatables.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\jquery-1.12.4.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\jquery.dataTables.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\jszip.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\pdfmake.min.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\data-table\vfs_fonts.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\gmap\gmapApi.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\gmap\gmaps.js" />
+    <Content Include="Areas\Admin\Assets\js\lib\gmap\gmaps.min.js" />
+    <Content Include="Areas\Admin\Assets\js\main.js" />
+    <Content Include="Areas\Admin\Assets\js\vmap.sampledata.js" />
+    <Content Include="Areas\Admin\Assets\js\widgets.js" />
+    <Content Include="Areas\Admin\Assets\scss\style.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\custom.css" />
     <Content Include="Assets\css\fontawesome.css" />
@@ -335,6 +394,15 @@
     <Content Include="Assets\Login\scss\bootstrap\_utilities.scss" />
     <Content Include="Assets\Login\scss\bootstrap\_variables.scss" />
     <Content Include="Assets\Login\scss\style.scss" />
+    <Content Include="Areas\Admin\Assets\css\style.css.map" />
+    <Content Include="Areas\Admin\Assets\fonts\icomoon\icomoon.eot" />
+    <Content Include="Areas\Admin\Assets\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Areas\Admin\Assets\fonts\icomoon\icomoon.woff" />
+    <Content Include="Areas\Admin\Assets\scss\style.css.map" />
+    <Content Include="Areas\Admin\Assets\scss\style.scss" />
+    <Content Include="Areas\Admin\Assets\images\logo.psd" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeDashboard\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -365,9 +433,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
