@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace timdothatlac.Areas.Admin.Controllers
 {
-    public class HomeDashboardController : Controller
+    public class HomeDashboardController : BaseController
     {
         // GET: Admin/HomeDashboard
         public ActionResult Index()
