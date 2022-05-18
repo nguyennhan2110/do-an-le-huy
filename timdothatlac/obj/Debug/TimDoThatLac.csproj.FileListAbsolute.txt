@@ -83,3 +83,5 @@ C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\TimDoThatLac.cs
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\TimDoThatLac.csproj.CopyComplete
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\timdothatlac.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\timdothatlac.pdb
+C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.Mvc.dll
+C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.Mvc.xml

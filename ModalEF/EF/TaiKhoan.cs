@@ -50,7 +50,10 @@ namespace ModalEF.EF
         [StringLength(50)]
         public string AnhTheSV { get; set; }
 
-        public bool? TrangThai { get; set; }
+        public bool TrangThai { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? NgayTao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaiDang> BaiDangs { get; set; }
