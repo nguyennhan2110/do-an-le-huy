@@ -104,9 +104,7 @@ namespace ModalEF.DAO
                 return true;
             }
             catch (Exception)
-            {
-                return false;
-            }
+            { return false; }
 
         }
 

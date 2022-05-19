@@ -9,7 +9,7 @@ using timdothatlac.Common;
 
 namespace timdothatlac.Areas.Admin.Controllers
 {
-    public class TaiKhoanController : Controller
+    public class TaiKhoanController : BaseController
     {
         //Phân trang list, default = 5
         public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
@@ -42,7 +42,7 @@ namespace timdothatlac.Areas.Admin.Controllers
                 long id = dao.Insert(taiKhoan);
                 if (id > 0)
                 {
-                    //SetAlert("Thêm tài khoản thành công!", "success");
+                    SetAlert("Thêm tài khoản thành công!", "success");
                     return RedirectToAction("Index", "TaiKhoan");
                 }
                 else
@@ -71,11 +71,11 @@ namespace timdothatlac.Areas.Admin.Controllers
                     var encryptedMd5Pas = Encryptor.MD5Hash(taiKhoan.MatKhau);
                     taiKhoan.MatKhau = encryptedMd5Pas;
                 }
-                
+
                 var result = dao.Update(taiKhoan);
                 if (result)
                 {
-                    //SetAlert("Cập nhật thành công!", "success");
+                    SetAlert("Cập nhật thành công!", "success");
                     return RedirectToAction("Index", "TaiKhoan");
                 }
                 else
@@ -91,7 +91,6 @@ namespace timdothatlac.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             new TaiKhoanDao().Delete(id);
-
             return RedirectToAction("Index");
         }
 

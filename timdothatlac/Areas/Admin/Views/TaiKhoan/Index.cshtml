@@ -50,23 +50,24 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                    <tr id="row_@item.MaTaiKhoan">
-                                        <td>@item.Email</td>
-                                        <td>@item.Ten</td>
-                                        @*<td>@item.GioiTinh</td>*@
-                                        <td>@Html.Raw(item.GioiTinh ? "Nam" : "Nữ")</td>
-                                        <td><a href="#" class="btn-active" data-id="@item.MaTaiKhoan">@Html.Raw(item.TrangThai ? "<strong>Kích hoạt</strong>" : "Khoá")</a></td>
-                                        <td>
-                                            <a href="/Admin/UserAdmin/Edit/@item.MaTaiKhoan">Chỉnh sửa</a>
-                                            |
-                                            @Ajax.ActionLink("Xoá", "Delete", new { @id = item.MaTaiKhoan }, new AjaxOptions
-                                       {
-                                           Confirm = "Bạn có muốn xoá bản ghi này?",
-                                           OnComplete = "$('#row_" + @item.MaTaiKhoan + "').remove()",
-                                           HttpMethod = "Delete"
-                                       })
-                                        </td>
-                                    </tr>
+                                        <tr id="row_@item.MaTaiKhoan">
+                                            <td>@item.Email</td>
+                                            <td>@item.Ten</td>
+                                            <td>@Html.Raw(item.GioiTinh ? "Nam" : "Nữ")</td>
+                                            <td><a href="#" class="btn-active" data-id="@item.MaTaiKhoan">@Html.Raw(item.TrangThai ? "Kích hoạt" : "Khoá")</a></td>
+                                            <td>
+                                                <a href="/Admin/TaiKhoan/Edit/@item.MaTaiKhoan">Xem chi tiết</a>
+                                                |
+                                                <a href="/Admin/TaiKhoan/Edit/@item.MaTaiKhoan">Chỉnh sửa</a>
+                                                |
+                                                @Ajax.ActionLink("Xoá", "Delete", new { @id = item.MaTaiKhoan }, new AjaxOptions
+                                               {
+                                               Confirm = "Bạn có muốn xoá bản ghi này?",
+                                               OnComplete = "$('#row_" + @item.MaTaiKhoan + "').remove()",
+                                               HttpMethod = "Delete"
+                                               })
+                                            </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -78,5 +79,4 @@
         </div>
     </div>
 </div>
-
 <script src="~/Areas/Admin/Assets/js/controller/userController.js"></script>
