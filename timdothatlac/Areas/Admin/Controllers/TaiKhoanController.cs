@@ -12,7 +12,7 @@ namespace timdothatlac.Areas.Admin.Controllers
     public class TaiKhoanController : BaseController
     {
         //Phân trang list, default = 5
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new TaiKhoanDao();
             var model = dao.ListAllPaging(searchString, page, pageSize);
@@ -38,6 +38,8 @@ namespace timdothatlac.Areas.Admin.Controllers
 
                 var encryptedMd5Pass = Encryptor.MD5Hash(taiKhoan.MatKhau);
                 taiKhoan.MatKhau = encryptedMd5Pass;
+                taiKhoan.MaQuyen = 2;
+                taiKhoan.NgayTao = DateTime.Now;
 
                 long id = dao.Insert(taiKhoan);
                 if (id > 0)

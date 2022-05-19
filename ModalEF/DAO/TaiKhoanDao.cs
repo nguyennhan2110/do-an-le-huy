@@ -49,7 +49,7 @@ namespace ModalEF.DAO
             IQueryable<TaiKhoan> model = db.TaiKhoans;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.Ten.Contains(searchString));
+                model = model.Where(x => x.Ten.Contains(searchString) || x.MaSinhVien.Contains(searchString));
             }
 
             return model.OrderByDescending(x => x.NgayTao).ToPagedList(page, pageSize);

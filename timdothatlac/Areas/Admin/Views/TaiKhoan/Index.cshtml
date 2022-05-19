@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Quản lý người dùng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -24,7 +24,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-inline">
-                                            <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" placeholder="Nhập tên người dùng" />
+                                            <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" placeholder="Nhập thông tin" />
                                             <button type="submit" class="btn btn-warning" style="margin-left:20px">Tìm kiếm</button>
                                         </div>
                                     </div>
@@ -42,32 +42,34 @@
                                     <tr>
                                         <th>Email</th>
                                         <th>Tên người dùng</th>
+                                        <th>Mã sinh viên</th>
                                         <th>Giới tính</th>
                                         <th>Trạng thái</th>
-                                        <th>Thao tác</th>
+                                        <th class="col-md-3">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr id="row_@item.MaTaiKhoan">
-                                            <td>@item.Email</td>
-                                            <td>@item.Ten</td>
-                                            <td>@Html.Raw(item.GioiTinh ? "Nam" : "Nữ")</td>
-                                            <td><a href="#" class="btn-active" data-id="@item.MaTaiKhoan">@Html.Raw(item.TrangThai ? "Kích hoạt" : "Khoá")</a></td>
-                                            <td>
-                                                <a href="/Admin/TaiKhoan/Edit/@item.MaTaiKhoan">Xem chi tiết</a>
-                                                |
-                                                <a href="/Admin/TaiKhoan/Edit/@item.MaTaiKhoan">Chỉnh sửa</a>
-                                                |
-                                                @Ajax.ActionLink("Xoá", "Delete", new { @id = item.MaTaiKhoan }, new AjaxOptions
-                                               {
-                                               Confirm = "Bạn có muốn xoá bản ghi này?",
-                                               OnComplete = "$('#row_" + @item.MaTaiKhoan + "').remove()",
-                                               HttpMethod = "Delete"
-                                               })
-                                            </td>
-                                        </tr>
+                                    <tr id="row_@item.MaTaiKhoan">
+                                        <td>@item.Email</td>
+                                        <td>@item.Ten</td>
+                                        <td>@item.MaSinhVien</td>
+                                        <td>@Html.Raw(item.GioiTinh ? "Nam" : "Nữ")</td>
+                                        <td><a href="#" class="btn-active" data-id="@item.MaTaiKhoan">@Html.Raw(item.TrangThai ? "Kích hoạt" : "Khoá")</a></td>
+                                        <td>
+                                            <a href="/Admin/TaiKhoan/Edit/@item.MaTaiKhoan" class="btn-sm btn-info">Xem chi tiết</a>
+                                            
+                                            <a href="/Admin/TaiKhoan/Edit/@item.MaTaiKhoan" class="btn-sm btn-success">Chỉnh sửa</a>
+                                            
+                                            @Ajax.ActionLink("Xoá", "Delete", new { @id = item.MaTaiKhoan }, new AjaxOptions
+                                       {
+                                           Confirm = "Bạn có muốn xoá bản ghi này?",
+                                           OnComplete = "$('#row_" + @item.MaTaiKhoan + "').remove()",
+                                           HttpMethod = "Delete"
+                                       }, new {@class="btn-sm btn-danger"})
+                                        </td>
+                                    </tr>
                                     }
                                 </tbody>
                             </table>
