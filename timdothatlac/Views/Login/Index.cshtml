@@ -10,6 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Assets/img/favicon1.ico">
     <link rel="stylesheet" href="~/Assets/Login/css/style.css">
 </head>
 
@@ -30,12 +31,10 @@
                             {
                                 <form action="#" class="signin-form">
                                     <div class="form-group mt-3">
-                                        @*<input type="text" class="form-control" required>*@
                                         @Html.TextBoxFor(model => model.MailUser, new { @class = "form-control", @autofocus = "autofocus", @type = "text", @placeholder = "Nhập email" })
                                         <label class="form-control-placeholder" for="username">Email</label>
                                     </div>
                                     <div class="form-group" id="wrap-pass">
-                                        @*<input id="password-field" type="password" class="form-control" required>*@
                                         @Html.PasswordFor(model => model.MatKhauUser, new { @class = "form-control", @id = "password-field", @type = "password", @placeholder = "Nhập mật khẩu" })
                                         <label class="form-control-placeholder" for="password">Mật khẩu</label>
                                         <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
@@ -58,7 +57,7 @@
                                     </div>
                                 </form>
                             }
-                            <p class="text-center">Bạn chưa có tài khoản? <a data-toggle="tab" href="#signup">Đăng ký ngay</a></p>
+                            <p class="text-center">Bạn chưa có tài khoản? <a href="@Url.Action("Create", "Register")">Đăng ký ngay</a></p>
                         </div>
                     </div>
                 </div>
