@@ -28,6 +28,9 @@ namespace timdothatlac.Controllers
             if (ModelState.IsValid)
             {
                 taiKhoan.MatKhau = Encryptor.MD5Hash(taiKhoan.MatKhau);
+                taiKhoan.MaQuyen = 2;
+                taiKhoan.TrangThai = true;
+                taiKhoan.NgayTao = DateTime.Now;
                 db.TaiKhoans.Add(taiKhoan);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Login");
