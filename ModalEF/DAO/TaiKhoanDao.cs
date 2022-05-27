@@ -36,7 +36,11 @@ namespace ModalEF.DAO
             }
             else
             {
-                if (result.MatKhau.Contains(passWord))
+                if (result.TrangThai == false)
+                {
+                    return -1;
+                }
+                else if (result.MatKhau.Contains(passWord))
                 { return 1; }
                 else
                 { return 0; }
