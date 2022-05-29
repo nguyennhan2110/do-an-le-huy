@@ -1,14 +1,15 @@
 ﻿@model ModalEF.EF.TaiKhoan
 @{
-    ViewBag.Title = "Tạo tài khoản";
+    ViewBag.Title = "Chỉnh sửa";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong>Thêm mới tài khoản</strong>
+                <strong>Chỉnh sửa tài khoản</strong>
             </div>
 
             <div class="card-body card-block ml-3">
@@ -63,7 +64,7 @@
 
                     <div class="row form-group">
                         <label class="pr-1  form-control-label col-md-3"><strong>Ngày sinh</strong></label>
-                        @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "col-md-6 form-control", @type = "date" } })
+                        @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "col-md-6 form-control" } })
                         @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
                     </div>
 
@@ -81,7 +82,7 @@
 
                     <div class="row form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Tạo mới" class="btn btn-success" />
+                            <input type="submit" value="Lưu" class="btn btn-success" />
                         </div>
                     </div>
                 }

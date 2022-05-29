@@ -2,7 +2,9 @@
 using ModalEF.EF;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using timdothatlac.Common;
@@ -11,6 +13,8 @@ namespace timdothatlac.Areas.Admin.Controllers
 {
     public class TaiKhoanController : BaseController
     {
+        private ContextDB db = new ContextDB();
+
         //Phân trang list, default = 5
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
@@ -26,6 +30,7 @@ namespace timdothatlac.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen");
             return View();
         }
 
@@ -38,7 +43,6 @@ namespace timdothatlac.Areas.Admin.Controllers
 
                 var encryptedMd5Pass = Encryptor.MD5Hash(taiKhoan.MatKhau);
                 taiKhoan.MatKhau = encryptedMd5Pass;
-                taiKhoan.MaQuyen = 2;
                 taiKhoan.NgayTao = DateTime.Now;
 
                 long id = dao.Insert(taiKhoan);
@@ -52,40 +56,38 @@ namespace timdothatlac.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Thêm tài khoản thất bại!");
                 }
             }
+            ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
             return View("Index");
         }
 
         //Sửa
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            var taiKhoan = new TaiKhoanDao().ViewDetail(id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
+            if (taiKhoan == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
             return View(taiKhoan);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(TaiKhoan taiKhoan)
         {
             if (ModelState.IsValid)
             {
-                var dao = new TaiKhoanDao();
-                if (!string.IsNullOrEmpty(taiKhoan.MatKhau))
-                {
-                    var encryptedMd5Pas = Encryptor.MD5Hash(taiKhoan.MatKhau);
-                    taiKhoan.MatKhau = encryptedMd5Pas;
-                }
-
-                var result = dao.Update(taiKhoan);
-                if (result)
-                {
-                    SetAlert("Cập nhật thành công!", "success");
-                    return RedirectToAction("Index", "TaiKhoan");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhật thất bại!");
-                }
+                db.Entry(taiKhoan).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            return View("Index");
+            ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
+            return View(taiKhoan);
         }
 
         //Xoá
@@ -94,6 +96,21 @@ namespace timdothatlac.Areas.Admin.Controllers
         {
             new TaiKhoanDao().Delete(id);
             return RedirectToAction("Index");
+        }
+
+        //Xem chi tiết
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
+            if (taiKhoan == null)
+            {
+                return HttpNotFound();
+            }
+            return View(taiKhoan);
         }
 
         [HttpPost]

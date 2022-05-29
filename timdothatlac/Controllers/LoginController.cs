@@ -38,13 +38,13 @@ namespace timdothatlac.Controllers
                 else
                 {
                     var result = dao.Login(model.MailUser, Encryptor.MD5Hash(model.MatKhauUser));
-                    if (result == -1)
-                    {
-                        ModelState.AddModelError("", "Tài khoản đã bị khóa!");
-                    }
-                    else if (result == 0)
+                    if (result == 0)
                     {
                         ModelState.AddModelError("", "Email hoặc mật khẩu không chính xác!");
+                    }
+                    else if (result == -1)
+                    {
+                        ModelState.AddModelError("", "Tài khoản đã bị khóa!");
                     }
                     else if (result == 1)
                     {

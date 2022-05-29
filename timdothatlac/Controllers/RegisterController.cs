@@ -35,8 +35,6 @@ namespace timdothatlac.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Login");
             }
-
-            ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
             return View(taiKhoan);
         }
         

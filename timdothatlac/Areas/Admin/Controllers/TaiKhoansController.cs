@@ -62,38 +62,7 @@ namespace timdothatlac.Areas.Admin.Controllers
         }
 
         // GET: Admin/TaiKhoans/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
-            if (taiKhoan == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
-            return View(taiKhoan);
-        }
-
-        // POST: Admin/TaiKhoans/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaTaiKhoan,MaQuyen,MaSinhVien,Ten,GioiTinh,Email,MatKhau,SDT,NgaySinh,AnhDaiDien,AnhTheSV,TrangThai,NgayTao")] TaiKhoan taiKhoan)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(taiKhoan).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
-            return View(taiKhoan);
-        }
-
+        
         // GET: Admin/TaiKhoans/Delete/5
         public ActionResult Delete(int? id)
         {
