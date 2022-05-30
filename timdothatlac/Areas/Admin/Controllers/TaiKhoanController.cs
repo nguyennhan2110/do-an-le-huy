@@ -15,7 +15,7 @@ namespace timdothatlac.Areas.Admin.Controllers
     {
         private ContextDB db = new ContextDB();
 
-        //Phân trang list, default = 5
+        //Phân trang list, default = 10
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new TaiKhoanDao();
@@ -121,6 +121,13 @@ namespace timdothatlac.Areas.Admin.Controllers
             {
                 status = result
             });
+        }
+
+        //Đăng xuất
+        public ActionResult Logout()
+        {
+            Session[Constant.USER_SESSION] = null;
+            return RedirectToAction("Index", "Login", routeValues: new { Area = "" });
         }
     }
 }

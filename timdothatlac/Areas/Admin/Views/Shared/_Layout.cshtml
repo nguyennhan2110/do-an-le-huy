@@ -102,14 +102,14 @@
                         <a href="@Url.Action("Index", "TaiKhoan")"> <i class="menu-icon fa fa-user"></i>Người dùng </a>
                     </li>
                     <li>
-                        <a href="/Admin/UserGroupAdmin/Index"> <i class="menu-icon fa fa-users"></i>Quyền người dùng </a>
+                        <a href="@Url.Action("Index", "Quyen")"> <i class="menu-icon fa fa-users"></i>Quyền người dùng </a>
                     </li>
                     <li class="menu-title">Tính năng</li><!-- /.menu-title -->
                     <li>
-                        <a href="/Admin/ProductAdmin/Index"> <i class="menu-icon fa fa-folder"></i>Danh sách bài đăng </a>
+                        <a href="@Url.Action("Index", "BaiDang")"> <i class="menu-icon fa fa-folder"></i>Danh sách bài đăng </a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-folder-open"></i>Danh sách ĐK nhận </a>
+                        <a href="@Url.Action("Index", "DangKyNhanLai")"> <i class="menu-icon fa fa-folder-open"></i>Danh sách ĐK nhận </a>
                     </li>
                     <li class="menu-title">Thống kê </li><!-- /.menu-title -->
 
@@ -170,13 +170,13 @@
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <img class="user-avatar rounded-circle" src="~/Areas/Admin/Assets/images/nhanadmin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="~/Areas/Admin/Assets/images/admin.jpg" alt="User Avatar">
                         </a>
                     </div>
                     <div class="ml-2">
                         <a href="/Admin/TaiKhoan/Edit/@session.MaUser">Cài đặt</a>
-                        <br/>
-                        <a href="#" style="color: red">Đăng xuất</a>
+                        <br />
+                        @Html.ActionLink("Đăng xuất", "Logout", "Login", new { @style = "color:#ff0000" })
                     </div>
                 </div>
             </div>

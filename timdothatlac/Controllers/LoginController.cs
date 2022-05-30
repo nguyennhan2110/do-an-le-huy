@@ -65,11 +65,13 @@ namespace timdothatlac.Controllers
             }
             return View("Index");
         }
+
         //Đăng xuất
         public ActionResult Logout()
         {
             Session[Constant.USER_SESSION] = null;
-            return Redirect("/");
+            return RedirectToAction("Index", "Login", routeValues: new { Area = "" });
+            //return Redirect("/");
         }
     }
 }
