@@ -2,17 +2,19 @@
 using ModalEF.EF;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using timdothatlac.Common;
 
 namespace timdothatlac.Areas.Admin.Controllers
 {
-    public class BaiDangController : BaseController
+    public class BaiDangController : Controller
     {
         private ContextDB db = new ContextDB();
-
+       
         //Phân trang list, default = 10
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
@@ -25,6 +27,7 @@ namespace timdothatlac.Areas.Admin.Controllers
         }
 
         //Thêm
+        [HttpGet]
         public ActionResult Create()
         {
             ViewBag.MaAnhDinhKem = new SelectList(db.AnhDinhKems, "MaAnhDinhKem", "AnhBia");
@@ -35,10 +38,20 @@ namespace timdothatlac.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(BaiDang baiDang)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "MaBaiDang,MaDanhMuc,MaTaiKhoan,MaAnhDinhKem,MaTrangThaiBaiDang,TieuDe,NoiDung,NgayTao,NgayDuyet,TrangThaiDuyet")] BaiDang baiDang)
         {
+            var session = (timdothatlac.Common.LoginUserSession)Session[timdothatlac.Common.Constant.USER_SESSION];
+
             if (ModelState.IsValid)
             {
+                baiDang.NgayTao = DateTime.Now;
+                baiDang.MaTaiKhoan = session.MaUser;
+
+                if (baiDang.TrangThaiDuyet)
+                {
+                    baiDang.NgayDuyet = DateTime.Now;
+                }
                 db.BaiDangs.Add(baiDang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -51,12 +64,67 @@ namespace timdothatlac.Areas.Admin.Controllers
             return View(baiDang);
         }
 
+        //Sửa
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BaiDang baiDang = db.BaiDangs.Find(id);
+            if (baiDang == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.MaAnhDinhKem = new SelectList(db.AnhDinhKems, "MaAnhDinhKem", "AnhBia", baiDang.MaAnhDinhKem);
+            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", baiDang.MaDanhMuc);
+            ViewBag.MaTaiKhoan = new SelectList(db.TaiKhoans, "MaTaiKhoan", "Ten", baiDang.MaTaiKhoan);
+            ViewBag.MaTrangThaiBaiDang = new SelectList(db.TrangThaiBaiDangs, "MaTrangThaiBaiDang", "TenTrangThai", baiDang.MaTrangThaiBaiDang);
+            return View(baiDang);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "MaBaiDang,MaDanhMuc,MaTaiKhoan,MaAnhDinhKem,MaTrangThaiBaiDang,TieuDe,NoiDung,NgayTao,NgayDuyet,TrangThaiDuyet")] BaiDang baiDang)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(baiDang).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.MaAnhDinhKem = new SelectList(db.AnhDinhKems, "MaAnhDinhKem", "AnhBia", baiDang.MaAnhDinhKem);
+            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", baiDang.MaDanhMuc);
+            ViewBag.MaTaiKhoan = new SelectList(db.TaiKhoans, "MaTaiKhoan", "Ten", baiDang.MaTaiKhoan);
+            ViewBag.MaTrangThaiBaiDang = new SelectList(db.TrangThaiBaiDangs, "MaTrangThaiBaiDang", "TenTrangThai", baiDang.MaTrangThaiBaiDang);
+            return View(baiDang);
+        }
+
         //Xoá
         [HttpDelete]
         public ActionResult Delete(int id)
         {
             new BaiDangDao().Delete(id);
             return RedirectToAction("Index");
+        }
+
+        //Xem chi tiết
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BaiDang baiDang = db.BaiDangs.Find(id);
+            if (baiDang == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.MaAnhDinhKem = new SelectList(db.AnhDinhKems, "MaAnhDinhKem", "AnhBia", baiDang.MaAnhDinhKem);
+            ViewBag.MaDanhMuc = new SelectList(db.DanhMucs, "MaDanhMuc", "TenDanhMuc", baiDang.MaDanhMuc);
+            ViewBag.MaTaiKhoan = new SelectList(db.TaiKhoans, "MaTaiKhoan", "Ten", baiDang.MaTaiKhoan);
+            ViewBag.MaTrangThaiBaiDang = new SelectList(db.TrangThaiBaiDangs, "MaTrangThaiBaiDang", "TenTrangThai", baiDang.MaTrangThaiBaiDang);
+            return View(baiDang);
         }
 
         [HttpPost]

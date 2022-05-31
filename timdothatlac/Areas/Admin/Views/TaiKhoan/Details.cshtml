@@ -12,7 +12,7 @@
             </div>
 
             <div class="card-body card-block ml-3">
-                @using (Html.BeginForm("Create", "TaiKhoan", FormMethod.Post))
+                @using (Html.BeginForm("Details", "TaiKhoan", FormMethod.Get))
                 {
                     @Html.AntiForgeryToken()
 

@@ -428,6 +428,8 @@
     <Content Include="Areas\Admin\Views\BaiDangs\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BaiDang\Index.cshtml" />
     <Content Include="Areas\Admin\Views\BaiDang\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiDang\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiDang\Details.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

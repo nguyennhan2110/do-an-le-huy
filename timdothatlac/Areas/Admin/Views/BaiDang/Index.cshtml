@@ -1,7 +1,8 @@
 ﻿@model PagedList.IPagedList<ModalEF.EF.BaiDang>
 @using PagedList.Mvc;
+
 @{
-    ViewBag.Title = "Quản lý bài đăng";
+    ViewBag.Title = "Danh sách bài đăng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -42,7 +43,7 @@
                                     <tr>
                                         <th>Tiêu đề</th>
                                         <th>Nội dung</th>
-                                        <th>Danh mục</th>
+                                        <th>Người tạo</th>
                                         <th>Ngày tạo</th>
                                         <th>Trạng thái duyệt</th>
                                         <th>Thao tác</th>
@@ -54,9 +55,9 @@
                                         <tr id="row_@item.MaBaiDang">
                                             <td>@item.TieuDe</td>
                                             <td>@item.NoiDung</td>
-                                            <td>@item.MaDanhMuc</td>
+                                            <td>@item.TaiKhoan.Ten</td>
                                             <td>@item.NgayTao</td>
-                                            <td><a href="#" class="btn-active" data-id="@item.MaTaiKhoan">@Html.Raw(item.TrangThaiDuyet ? "Đã duyệt" : "Chưa duyệt")</a></td>
+                                            <td><a href="#" class="btn-active" data-id="@item.MaBaiDang">@Html.Raw(item.TrangThaiDuyet ? "Đã duyệt" : "Chưa duyệt")</a></td>
                                             <td>
                                                 <a href="/Admin/BaiDang/Details/@item.MaBaiDang" class="btn-sm btn-info">Xem chi tiết</a>
 
@@ -82,3 +83,5 @@
     </div>
 </div>
 <script src="~/Areas/Admin/Assets/js/controller/BaiDangController.js"></script>
+
+
