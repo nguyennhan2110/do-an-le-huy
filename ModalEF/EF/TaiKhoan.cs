@@ -55,6 +55,9 @@ namespace ModalEF.EF
         [Column(TypeName = "date")]
         public DateTime? NgayTao { get; set; }
 
+        [StringLength(6)]
+        public string MaXacNhan { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaiDang> BaiDangs { get; set; }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using ModalEF.EF;
@@ -118,6 +120,50 @@ namespace ModalEF.DAO
             taiKhoan.TrangThai = !taiKhoan.TrangThai;
             db.SaveChanges();
             return taiKhoan.TrangThai;
+        }
+
+        //Gửi mail
+        public string SendEmail(string receiverMail)
+        {
+            Random rd = new Random();
+            var code = rd.Next(100000, 999999).ToString();
+            var message = "Cảm ơn bạn đã đăng ký tài khoản trên timdothatlac.vn. Mã xác nhận của bạn là: " + code;
+            var subject = "KÍCH HOẠT TÀI KHOẢN CỦA BẠN TRÊN TIMDOTHATLAC.VN";
+            try
+            {
+                var senderEmail = new MailAddress("timdothatlac.vn@gmail.com", "timdothatlac");
+                var receiverEmail = new MailAddress(receiverMail, "ReceiverMail");
+                var password = "DLH1811505310";
+                var sub = subject;
+                var body = message;
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = true,
+                    Credentials = new NetworkCredential(senderEmail.Address, password)
+                };
+
+                using (var mess = new MailMessage(senderEmail, receiverEmail)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp.Send(mess);
+                }
+
+                return code;
+
+            }
+            catch (Exception e)
+            {
+                var a = e;
+            }
+            return null;
         }
     }
 }
