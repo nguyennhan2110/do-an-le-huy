@@ -87,10 +87,17 @@ namespace timdothatlac.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(TaiKhoan taiKhoan)
+        public ActionResult Edit(TaiKhoan taiKhoan, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                string path = Server.MapPath("~/FileUpload");
+                string fileName = Path.GetFileName(file.FileName);
+
+                string pathFull = Path.Combine(path, fileName);
+                file.SaveAs(pathFull);
+
+                taiKhoan.AnhDaiDien = file.FileName;
                 db.Entry(taiKhoan).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
