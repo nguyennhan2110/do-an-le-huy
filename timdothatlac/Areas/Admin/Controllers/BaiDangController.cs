@@ -3,6 +3,7 @@ using ModalEF.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,7 +15,8 @@ namespace timdothatlac.Areas.Admin.Controllers
     public class BaiDangController : Controller
     {
         private ContextDB db = new ContextDB();
-       
+        public AnhDinhKem adk = new AnhDinhKem();
+
         //Phân trang list, default = 10
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
@@ -39,12 +41,21 @@ namespace timdothatlac.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaBaiDang,MaDanhMuc,MaTaiKhoan,MaAnhDinhKem,MaTrangThaiBaiDang,TieuDe,NoiDung,NgayTao,NgayDuyet,TrangThaiDuyet")] BaiDang baiDang)
+        public ActionResult Create([Bind(Include = "MaBaiDang,MaDanhMuc,MaTaiKhoan,MaAnhDinhKem,MaTrangThaiBaiDang,TieuDe,NoiDung,NgayTao,NgayDuyet,TrangThaiDuyet")] BaiDang baiDang, HttpPostedFileBase file)
         {
             var session = (timdothatlac.Common.LoginUserSession)Session[timdothatlac.Common.Constant.USER_SESSION];
 
             if (ModelState.IsValid)
             {
+                //file 
+                string path = Server.MapPath("~/FileUpload");
+                string fileName = Path.GetFileName(file.FileName);
+                string pathFull = Path.Combine(path, fileName);
+                file.SaveAs(pathFull);
+                adk.AnhBia = file.FileName;
+                var a = db.AnhDinhKems.Add(adk);
+
+                baiDang.MaAnhDinhKem = a.MaAnhDinhKem;
                 baiDang.NgayTao = DateTime.Now;
                 baiDang.MaTaiKhoan = session.MaUser;
 
@@ -85,10 +96,20 @@ namespace timdothatlac.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaBaiDang,MaDanhMuc,MaTaiKhoan,MaAnhDinhKem,MaTrangThaiBaiDang,TieuDe,NoiDung,NgayTao,NgayDuyet,TrangThaiDuyet")] BaiDang baiDang)
+        public ActionResult Edit([Bind(Include = "MaBaiDang,MaDanhMuc,MaTaiKhoan,MaAnhDinhKem,MaTrangThaiBaiDang,TieuDe,NoiDung,NgayTao,NgayDuyet,TrangThaiDuyet")] BaiDang baiDang, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                //file 
+                string path = Server.MapPath("~/FileUpload");
+                string fileName = Path.GetFileName(file.FileName);
+                string pathFull = Path.Combine(path, fileName);
+                file.SaveAs(pathFull);
+                adk.AnhBia = file.FileName;
+                var a = db.AnhDinhKems.Add(adk);
+                baiDang.MaAnhDinhKem = a.MaAnhDinhKem;
+
+                baiDang.NgayTao = DateTime.Now;
                 db.Entry(baiDang).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

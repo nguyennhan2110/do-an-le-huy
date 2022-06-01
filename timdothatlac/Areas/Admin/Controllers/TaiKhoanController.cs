@@ -97,6 +97,7 @@ namespace timdothatlac.Areas.Admin.Controllers
                 string pathFull = Path.Combine(path, fileName);
                 file.SaveAs(pathFull);
 
+                taiKhoan.NgayTao = DateTime.Now;
                 taiKhoan.AnhDaiDien = file.FileName;
                 db.Entry(taiKhoan).State = EntityState.Modified;
                 db.SaveChanges();
