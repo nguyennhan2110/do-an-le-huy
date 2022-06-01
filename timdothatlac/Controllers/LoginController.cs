@@ -53,6 +53,7 @@ namespace timdothatlac.Controllers
                         userSession.MailUser = user.Email;
                         userSession.TenUser = user.Ten;
                         userSession.QuyenUser = user.MaQuyen;
+                        userSession.Avatar = user.AnhDaiDien;
 
                         Session.Add(Constant.USER_SESSION, userSession);
                         if (user.MaQuyen.ToString().Contains("1"))

@@ -162,8 +162,11 @@
                             <div class="account_desc">
                                 @{
                                     var session = (timdothatlac.Common.LoginUserSession)Session[timdothatlac.Common.Constant.USER_SESSION];
+                                    if (session != null)
+                                    {
+                                        <p>Bạn đang đăng nhập với: @session.TenUser </p>
+                                    }
                                 }
-                                <p>Bạn đang đăng nhập với: @session.TenUser </p>
                             </div>
                         </div>
                     </div>

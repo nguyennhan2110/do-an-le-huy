@@ -3,6 +3,7 @@ using ModalEF.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -35,15 +36,23 @@ namespace timdothatlac.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(TaiKhoan taiKhoan)
+        public ActionResult Create(TaiKhoan taiKhoan, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 var dao = new TaiKhoanDao();
 
+                //file 
+                string path = Server.MapPath("~/FileUpload");
+                string fileName = Path.GetFileName(file.FileName);
+
+                string pathFull = Path.Combine(path, fileName);
+                file.SaveAs(pathFull);
+
                 var encryptedMd5Pass = Encryptor.MD5Hash(taiKhoan.MatKhau);
                 taiKhoan.MatKhau = encryptedMd5Pass;
                 taiKhoan.NgayTao = DateTime.Now;
+                taiKhoan.AnhDaiDien = file.FileName;
 
                 long id = dao.Insert(taiKhoan);
                 if (id > 0)

@@ -12,7 +12,7 @@
             </div>
 
             <div class="card-body card-block ml-3">
-                @using (Html.BeginForm("Create", "TaiKhoan", FormMethod.Post))
+                @using (Html.BeginForm("Create", "TaiKhoan", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
 
@@ -77,6 +77,12 @@
                         <label class="pr-1  form-control-label col-md-3"><strong>Trạng thái</strong></label>
                         @Html.CheckBoxFor(model => model.TrangThai, new { htmlAttributes = new { @class = "col-md-6 form-control" } })
                         @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="row form-group">
+                        <label class="pr-1  form-control-label col-md-3"><strong>Ảnh đại diện</strong></label>
+                        <div class="col-12 col-md-9"><input type="file" name="file" class="form-control-file"></div>
+
                     </div>
 
                     <div class="row form-group">
