@@ -6,15 +6,10 @@ using System.Web.Mvc;
 
 namespace timdothatlac.Controllers
 {
-    public class InfoController : Controller
+    public class TaiKhoansController : Controller
     {
-        // GET: Info
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
+        // GET: TaiKhoan
+        public ActionResult Index()
         {
             return View();
         }

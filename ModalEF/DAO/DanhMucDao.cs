@@ -42,5 +42,11 @@ namespace ModalEF.DAO
             catch (Exception)
             { return false; }
         }
+
+        //Xử lý
+        public List<DanhMuc> ListFeatureDanhMuc(int top)
+        {
+            return db.DanhMucs.OrderByDescending(x => x.LuotTim).Take(top).ToList();
+        }
     }
 }

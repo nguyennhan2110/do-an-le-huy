@@ -1,8 +1,8 @@
-﻿@model IEnumerable<ModalEF.EF.DanhMuc>
-
-@{
-    ViewBag.Title = "Home Page";
+﻿@{
+    ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var listFeatureBaiDangs = (List<ModalEF.EF.BaiDang>)ViewBag.ListFeatureBaiDangs;
+    var listFeatureDanhMucs = (List<ModalEF.EF.DanhMuc>)ViewBag.ListFeatureDanhMucs;
 }
 
 
@@ -25,7 +25,6 @@
                             <h3 class="h2">Chúng tôi cung cấp dịch vụ abc....</h3>
                             <p>
                                 Tìm đồ thất lạc là abc
-                                
                             </p>
                         </div>
                     </div>
@@ -61,7 +60,7 @@
                             <h1 class="h1">Hơn 100+ bài đăng mỗi ngày</h1>
                             <h3 class="h2">Tìm đồ ngay </h3>
                             <p>
-                               Mô tả abd
+                                Mô tả abd
                             </p>
                         </div>
                     </div>
@@ -88,21 +87,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/Assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-            <h5 class="text-center mt-3 mb-3">Đồng hồ</h5>
-            <p class="text-center"><a class="btn btn-success">Xem</a></p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/Assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Giày</h2>
-            <p class="text-center"><a class="btn btn-success">Xem</a></p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/Assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Kính mắt</h2>
-            <p class="text-center"><a class="btn btn-success">Xem</a></p>
-        </div>
+        @foreach (var item in listFeatureDanhMucs)
+        {
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="~/FileUpload/@item.AnhMinhHoa" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">@item.TenDanhMuc</h5>
+                <p class="text-center"><a class="btn btn-success">Xem</a></p>
+            </div>
+        }
     </div>
 </section>
 
@@ -117,70 +109,29 @@
             </div>
         </div>
         <div class="row">
-
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="~/Assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                Phạm Thiên
-                            </li>
-                            <li class="text-muted text-right"> Trường ĐH Sư phạm kỹ thuật</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Mất apple watch sr4</a>
-                        <p class="card-text">
-                            Mặt màu đen, dây màu đỏ
-                        </p>
-                        <p class="text-muted">Tạo lúc 01/06/2022</p>
+            @foreach (var item in listFeatureBaiDangs)
+            {
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100 p-2">
+                        <a href="">
+                            <img src="~/FileUpload/@item.AnhDinhKem.AnhBia" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    @item.TaiKhoan.Ten
+                                </li>
+                                <li class="text-muted text-right">Danh mục: @item.DanhMuc.TenDanhMuc</li>
+                            </ul>
+                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">@item.TieuDe</a>
+                            <p class="card-text">
+                                @item.NoiDung
+                            </p>
+                            <p class="text-muted">Tạo lúc @item.NgayTao</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="~/Assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                Phạm Thiên
-                            </li>
-                            <li class="text-muted text-right"> Trường ĐH Sư phạm kỹ thuật</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Mất apple watch sr4</a>
-                        <p class="card-text">
-                            Mặt màu đen, dây màu đỏ
-                        </p>
-                        <p class="text-muted">Tạo lúc 01/06/2022</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4 mb-4">
-                <div class="card h-100">
-                    <a href="shop-single.html">
-                        <img src="~/Assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <ul class="list-unstyled d-flex justify-content-between">
-                            <li>
-                                Phạm Thiên
-                            </li>
-                            <li class="text-muted text-right"> Trường ĐH Sư phạm kỹ thuật</li>
-                        </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Mất apple watch sr4</a>
-                        <p class="card-text">
-                            Mặt màu đen, dây màu đỏ
-                        </p>
-                        <p class="text-muted">Tạo lúc 01/06/2022</p>
-                    </div>
-                </div>
-            </div>
-
+            }
         </div>
     </div>
 </section>

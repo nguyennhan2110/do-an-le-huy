@@ -58,6 +58,7 @@ namespace timdothatlac.Areas.Admin.Controllers
                 baiDang.MaAnhDinhKem = a.MaAnhDinhKem;
                 baiDang.NgayTao = DateTime.Now;
                 baiDang.MaTaiKhoan = session.MaUser;
+                baiDang.LuotXem = 0;
 
                 if (baiDang.TrangThaiDuyet)
                 {

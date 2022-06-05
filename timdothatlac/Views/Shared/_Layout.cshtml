@@ -13,14 +13,13 @@
     <link rel="stylesheet" href="~/Assets/css/templatemo.css">
     <link rel="stylesheet" href="~/Assets/css/custom.css">
 
-    <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="~/Assets/css/fontawesome.min.css">
 
 </head>
 
 <body>
-    <!-- Start Top Nav -->
+
     <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
@@ -39,12 +38,11 @@
             </div>
         </div>
     </nav>
-    <!-- Close Top Nav -->
-    <!-- Header -->
+
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="@Url.Action("Index", "Home")">
                 Timdothatlac.vn
             </a>
 
@@ -56,16 +54,16 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "BaiDang")">Tìm đồ</a>
+                            <a class="nav-link" href="@Url.Action("Index", "BaiDangs")">Tìm đồ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Contact", "Info")">Liên hệ</a>
+                            <a class="nav-link" href="@Url.Action("Contact", "Home")">Liên hệ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("About", "Info")">Về chúng tôi</a>
+                            <a class="nav-link" href="@Url.Action("About", "Home")">Về chúng tôi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-warning" href="@Url.Action("Create", "BaiDang")">Đăng bài</a>
+                            <a class="nav-link btn btn-warning" href="@Url.Action("Create", "BaiDang")"><i class="fa fa-fw fa-edit mr-4"></i>Đăng bài</a>
                         </li>
                     </ul>
                 </div>
@@ -75,9 +73,10 @@
                         if (session != null)
                         {
                             <a class="nav-icon position-relative text-decoration-none" href="@Url.Action("Index", "TaiKhoan")">
-                                <span><small>@session.TenUser</small></span>
+                                <small>@session.TenUser</small>
                                 <i class="fa fa-fw fa-user text-dark mr-3"></i>
                             </a>
+
                         }
                         else
                         {
@@ -91,9 +90,9 @@
             </div>
         </div>
     </nav>
-    <!-- Close Header -->
+
     @RenderBody()
-    <!-- Start Footer -->
+
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
@@ -184,14 +183,12 @@
         </div>
 
     </footer>
-    <!-- End Footer -->
-    <!-- Start Script -->
+
     <script src="~/Assets/js/jquery-1.11.0.min.js"></script>
     <script src="~/Assets/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="~/Assets/js/bootstrap.bundle.min.js"></script>
     <script src="~/Assets/js/templatemo.js"></script>
     <script src="~/Assets/js/custom.js"></script>
-    <!-- End Script -->
-</body>
 
+</body>
 </html>

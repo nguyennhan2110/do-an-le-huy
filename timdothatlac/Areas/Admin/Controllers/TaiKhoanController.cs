@@ -45,7 +45,6 @@ namespace timdothatlac.Areas.Admin.Controllers
                 //file 
                 string path = Server.MapPath("~/FileUpload");
                 string fileName = Path.GetFileName(file.FileName);
-
                 string pathFull = Path.Combine(path, fileName);
                 file.SaveAs(pathFull);
 

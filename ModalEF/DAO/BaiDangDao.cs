@@ -51,5 +51,11 @@ namespace ModalEF.DAO
             catch (Exception)
             { return false; }
         }
+
+        //Xử lý logic
+        public List<BaiDang> ListFeatureBaiDang(int top)
+        {
+            return db.BaiDangs.Where(x => x.LuotXem > 5).OrderByDescending(x => x.NgayTao).Take(top).ToList();
+        }
     }
 }

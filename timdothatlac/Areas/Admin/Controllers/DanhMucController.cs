@@ -3,6 +3,7 @@ using ModalEF.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -34,11 +35,20 @@ namespace timdothatlac.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDanhMuc,TenDanhMuc,NgayTao")] DanhMuc danhMuc)
+        public ActionResult Create([Bind(Include = "MaDanhMuc,TenDanhMuc,NgayTao")] DanhMuc danhMuc, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+
+                //file 
+                string path = Server.MapPath("~/FileUpload");
+                string fileName = Path.GetFileName(file.FileName);
+                string pathFull = Path.Combine(path, fileName);
+                file.SaveAs(pathFull);
+
                 danhMuc.NgayTao = DateTime.Now;
+                danhMuc.AnhMinhHoa = file.FileName;
+                danhMuc.LuotTim = 0;
                 db.DanhMucs.Add(danhMuc);
                 db.SaveChanges();
                 return RedirectToAction("Index");

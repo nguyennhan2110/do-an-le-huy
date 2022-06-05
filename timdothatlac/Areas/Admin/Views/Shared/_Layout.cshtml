@@ -89,7 +89,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="@Url.Action(" Index","Home", routeValues: new { Area="" })"><i class="menu-icon fa fa-home"></i>Trang người dùng</a>
+                        <a href="/Home/Index"><i class="menu-icon fa fa-home"></i>Trang người dùng</a>
                     </li>
                     <li class="menu-title">Hệ thống</li><!-- /.menu-title -->
                     <li>
@@ -174,14 +174,14 @@
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             @{
-                                if (session.Avatar == null)
+                                if (session?.Avatar == null)
                                 {
                                     <img class="user-avatar rounded-circle" src="~/Areas/Admin/Assets/images/avatar-default.png">
 
                                 }
                                 else
                                 {
-                                    <img class="user-avatar rounded-circle" src="~/FileUpload/@session.Avatar">
+                                    <img class="user-avatar rounded-circle" src="~/FileUpload/@session?.Avatar">
                                 }
                             }
                         </a>

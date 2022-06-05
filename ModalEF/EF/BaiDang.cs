@@ -37,6 +37,8 @@ namespace ModalEF.EF
 
         public bool TrangThaiDuyet { get; set; }
 
+        public int? LuotXem { get; set; }
+
         public virtual AnhDinhKem AnhDinhKem { get; set; }
 
         public virtual DanhMuc DanhMuc { get; set; }
