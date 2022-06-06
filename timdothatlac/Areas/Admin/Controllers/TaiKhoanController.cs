@@ -92,15 +92,20 @@ namespace timdothatlac.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 string path = Server.MapPath("~/FileUpload");
-                string fileName = Path.GetFileName(file.FileName);
-
-                string pathFull = Path.Combine(path, fileName);
-                file.SaveAs(pathFull);
-
-                taiKhoan.AnhDaiDien = file.FileName;
-                db.Entry(taiKhoan).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    string fileName = Path.GetFileName(file?.FileName);
+                    if (fileName != null)
+                    {
+                        string pathFull = Path.Combine(path, fileName);
+                        file.SaveAs(pathFull);
+                        taiKhoan.AnhDaiDien = file.FileName;
+                    }
+                    db.Entry(taiKhoan).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e) { }
             }
             ViewBag.MaQuyen = new SelectList(db.Quyens, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
             return View(taiKhoan);
