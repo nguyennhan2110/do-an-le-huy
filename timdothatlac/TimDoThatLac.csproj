@@ -463,6 +463,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Create.cshtml" />
     <Content Include="Views\BaiDangs\Index.cshtml" />
+    <Content Include="Views\BaiDangs\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

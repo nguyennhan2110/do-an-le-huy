@@ -90,8 +90,8 @@
         @foreach (var item in listFeatureDanhMucs)
         {
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="~/FileUpload/@item.AnhMinhHoa" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">@item.TenDanhMuc</h5>
+                <a href="#"><img src="~/FileUpload/@item?.AnhMinhHoa" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">@item?.TenDanhMuc</h5>
                 <p class="text-center"><a class="btn btn-success">Xem</a></p>
             </div>
         }
@@ -114,20 +114,20 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100 p-2">
                         <a href="">
-                            <img src="~/FileUpload/@item.AnhDinhKem.AnhBia" class="card-img-top" alt="...">
+                            <img src="~/FileUpload/@item?.AnhDinhKem?.AnhBia" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
                                 <li>
-                                    @item.TaiKhoan.Ten
+                                    @item?.TaiKhoan?.Ten
                                 </li>
-                                <li class="text-muted text-right">Danh mục: @item.DanhMuc.TenDanhMuc</li>
+                                <li class="text-muted text-right">Danh mục: @item?.DanhMuc?.TenDanhMuc</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">@item.TieuDe</a>
+                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">@item?.TieuDe</a>
                             <p class="card-text">
-                                @item.NoiDung
+                                @item?.NoiDung
                             </p>
-                            <p class="text-muted">Tạo lúc @item.NgayTao</p>
+                            <p class="text-muted">Tạo lúc @item?.NgayTao</p>
                         </div>
                     </div>
                 </div>

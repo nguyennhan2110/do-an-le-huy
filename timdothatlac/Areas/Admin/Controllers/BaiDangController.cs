@@ -103,16 +103,22 @@ namespace timdothatlac.Areas.Admin.Controllers
             {
                 //file 
                 string path = Server.MapPath("~/FileUpload");
-                string fileName = Path.GetFileName(file.FileName);
-                string pathFull = Path.Combine(path, fileName);
-                file.SaveAs(pathFull);
-                adk.AnhBia = file.FileName;
-                var a = db.AnhDinhKems.Add(adk);
-                baiDang.MaAnhDinhKem = a.MaAnhDinhKem;
-
-                baiDang.NgayTao = DateTime.Now;
-                db.Entry(baiDang).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    string fileName = Path.GetFileName(file.FileName);
+                    if (fileName != null)
+                    {
+                        string pathFull = Path.Combine(path, fileName);
+                        file.SaveAs(pathFull);
+                        adk.AnhBia = file.FileName;
+                        var a = db.AnhDinhKems.Add(adk);
+                        baiDang.MaAnhDinhKem = a.MaAnhDinhKem;
+                    }
+                    baiDang.NgayTao = DateTime.Now;
+                    db.Entry(baiDang).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (Exception e) { }
                 return RedirectToAction("Index");
             }
             ViewBag.MaAnhDinhKem = new SelectList(db.AnhDinhKems, "MaAnhDinhKem", "AnhBia", baiDang.MaAnhDinhKem);
