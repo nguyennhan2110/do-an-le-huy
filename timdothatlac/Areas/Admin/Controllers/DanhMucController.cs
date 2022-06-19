@@ -44,15 +44,19 @@ namespace timdothatlac.Areas.Admin.Controllers
                 string path = Server.MapPath("~/FileUpload");
                 try
                 {
-                    string fileName = Path.GetFileName(file.FileName);
-                    if (fileName != null)
+                    if (file != null)
                     {
+                        string fileName = Path.GetFileName(file.FileName);
                         string pathFull = Path.Combine(path, fileName);
                         file.SaveAs(pathFull);
+                        danhMuc.AnhMinhHoa = file.FileName;
+                    }
+                    else
+                    {
+                        danhMuc.AnhMinhHoa = null;
                     }
 
                     danhMuc.NgayTao = DateTime.Now;
-                    danhMuc.AnhMinhHoa = file.FileName;
                     danhMuc.LuotTim = 0;
                     db.DanhMucs.Add(danhMuc);
                     db.SaveChanges();
@@ -93,6 +97,7 @@ namespace timdothatlac.Areas.Admin.Controllers
                     {
                         string pathFull = Path.Combine(path, fileName);
                         file.SaveAs(pathFull);
+                        danhMuc.AnhMinhHoa = file.FileName;
                     }
                     db.Entry(danhMuc).State = EntityState.Modified;
                     db.SaveChanges();

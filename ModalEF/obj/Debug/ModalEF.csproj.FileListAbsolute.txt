@@ -13,4 +13,3 @@ C:\Users\MAC\source\repos\tim-do-that-lac\ModalEF\obj\Debug\ModalEF.csproj.CoreC
 C:\Users\MAC\source\repos\tim-do-that-lac\ModalEF\obj\Debug\ModalEF.csproj.CopyComplete
 C:\Users\MAC\source\repos\tim-do-that-lac\ModalEF\obj\Debug\ModalEF.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\ModalEF\obj\Debug\ModalEF.pdb
-C:\Users\MAC\source\repos\tim-do-that-lac\ModalEF\obj\Debug\ModalEF.csprojAssemblyReference.cache

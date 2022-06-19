@@ -42,16 +42,26 @@ namespace timdothatlac.Areas.Admin.Controllers
             {
                 var dao = new TaiKhoanDao();
 
-                //file 
-                string path = Server.MapPath("~/FileUpload");
-                string fileName = Path.GetFileName(file.FileName);
-                string pathFull = Path.Combine(path, fileName);
-                file.SaveAs(pathFull);
+                try
+                {
+                    string path = Server.MapPath("~/FileUpload");
+                    if(file != null)
+                    {
+                        string fileName = Path.GetFileName(file.FileName);
+                        string pathFull = Path.Combine(path, fileName);
+                        file.SaveAs(pathFull);
+                        taiKhoan.AnhDaiDien = file.FileName;
+                    }
+                    else
+                    {
+                        taiKhoan.AnhDaiDien = null;
+                    }
+                } catch (Exception e) { }
 
                 var encryptedMd5Pass = Encryptor.MD5Hash(taiKhoan.MatKhau);
                 taiKhoan.MatKhau = encryptedMd5Pass;
                 taiKhoan.NgayTao = DateTime.Now;
-                taiKhoan.AnhDaiDien = file.FileName;
+               
 
                 long id = dao.Insert(taiKhoan);
                 if (id > 0)
@@ -93,13 +103,14 @@ namespace timdothatlac.Areas.Admin.Controllers
                 string path = Server.MapPath("~/FileUpload");
                 try
                 {
-                    string fileName = Path.GetFileName(file?.FileName);
-                    if (fileName != null)
+                    if (file != null)
                     {
+                        string fileName = Path.GetFileName(file.FileName);
                         string pathFull = Path.Combine(path, fileName);
                         file.SaveAs(pathFull);
                         taiKhoan.AnhDaiDien = file.FileName;
                     }
+                  
                     db.Entry(taiKhoan).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");

@@ -49,13 +49,24 @@ namespace timdothatlac.Areas.Admin.Controllers
             {
                 //file 
                 string path = Server.MapPath("~/FileUpload");
-                string fileName = Path.GetFileName(file.FileName);
-                string pathFull = Path.Combine(path, fileName);
-                file.SaveAs(pathFull);
-                adk.AnhBia = file.FileName;
-                var a = db.AnhDinhKems.Add(adk);
+                try
+                {
+                    if (file != null)
+                    {
+                        string fileName = Path.GetFileName(file.FileName);
+                        string pathFull = Path.Combine(path, fileName);
+                        file.SaveAs(pathFull);
+                        adk.AnhBia = file.FileName;
+                        var a = db.AnhDinhKems.Add(adk);
+                        baiDang.MaAnhDinhKem = a.MaAnhDinhKem;
+                    }
+                    else
+                    {
+                        baiDang.MaAnhDinhKem = null;
+                    }
+                }
+                catch (Exception e) { }
 
-                baiDang.MaAnhDinhKem = a.MaAnhDinhKem;
                 baiDang.NgayTao = DateTime.Now;
                 baiDang.MaTaiKhoan = session.MaUser;
                 baiDang.LuotXem = 0;
@@ -105,9 +116,9 @@ namespace timdothatlac.Areas.Admin.Controllers
                 string path = Server.MapPath("~/FileUpload");
                 try
                 {
-                    string fileName = Path.GetFileName(file.FileName);
-                    if (fileName != null)
+                    if (file != null)
                     {
+                        string fileName = Path.GetFileName(file.FileName);
                         string pathFull = Path.Combine(path, fileName);
                         file.SaveAs(pathFull);
                         adk.AnhBia = file.FileName;

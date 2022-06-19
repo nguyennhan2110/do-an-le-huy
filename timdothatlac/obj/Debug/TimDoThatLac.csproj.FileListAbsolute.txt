@@ -54,6 +54,8 @@ C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\Microsoft.CodeDom.Pro
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\ModalEF.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\Newtonsoft.Json.dll
+C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.dll
+C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.Mvc.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.Helpers.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.Mvc.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.Optimization.dll
@@ -62,11 +64,12 @@ C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.WebPages.D
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.WebPages.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.WebPages.Razor.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\WebGrease.dll
-C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\ModalEF.pdb
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\ModalEF.dll.config
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\EntityFramework.xml
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\EntityFramework.SqlServer.xml
+C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.xml
+C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.Mvc.xml
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.Helpers.xml
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.Mvc.xml
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.Optimization.xml
@@ -77,11 +80,8 @@ C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\System.Web.WebPages.R
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\Newtonsoft.Json.xml
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\Antlr3.Runtime.pdb
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.xml
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\TimDoThatLac.csprojAssemblyReference.cache
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\TimDoThatLac.csproj.CoreCompileInputs.cache
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\TimDoThatLac.csproj.CopyComplete
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\timdothatlac.dll
 C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\obj\Debug\timdothatlac.pdb
-C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.Mvc.dll
-C:\Users\MAC\source\repos\tim-do-that-lac\timdothatlac\bin\PagedList.Mvc.xml

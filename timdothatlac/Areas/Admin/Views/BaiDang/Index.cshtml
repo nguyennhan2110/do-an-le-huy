@@ -53,15 +53,15 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr id="row_@item?.MaBaiDang">
-                                            <td>@item?.TieuDe</td>
-                                            <td>@item?.NoiDung</td>
-                                            <td>@item?.TaiKhoan?.Ten</td>
-                                            <td>@item?.NgayTao</td>
-                                            <td><a href="#" class="btn-active" data-id="@item?.MaBaiDang">@Html.Raw(item.TrangThaiDuyet ? "Đã duyệt" : "Chưa duyệt")</a></td>
+                                            <td>@item.TieuDe</td>
+                                            <td>@item.NoiDung</td>
+                                            <td>@item.TaiKhoan.Ten</td>
+                                            <td>@item.NgayTao</td>
+                                            <td><a href="#" class="btn-active" data-id="@item.MaBaiDang">@Html.Raw(item.TrangThaiDuyet ? "Đã duyệt" : "Chưa duyệt")</a></td>
                                             <td>
-                                                <a href="/Admin/BaiDang/Details/@item?.MaBaiDang" class="btn-sm btn-info">Xem chi tiết</a>
+                                                <a href="/Admin/BaiDang/Details/@item.MaBaiDang" class="btn-sm btn-info">Xem chi tiết</a>
 
-                                                <a href="/Admin/BaiDang/Edit/@item?.MaBaiDang" class="btn-sm btn-success">Chỉnh sửa</a>
+                                                <a href="/Admin/BaiDang/Edit/@item.MaBaiDang" class="btn-sm btn-success">Chỉnh sửa</a>
 
                                                 @Ajax.ActionLink("Xoá", "Delete", new { @id = item.MaBaiDang }, new AjaxOptions
                                            {
