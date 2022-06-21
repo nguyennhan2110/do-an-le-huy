@@ -72,11 +72,11 @@
                         var session = (timdothatlac.Common.LoginUserSession)Session[timdothatlac.Common.Constant.USER_SESSION];
                         if (session != null)
                         {
-                            <a class="nav-icon position-relative text-decoration-none" href="@Url.Action("Index", "TaiKhoan")">
+                            <a class="nav-icon position-relative text-decoration-none" href="@Url.Action("Index", "TaiKhoans", new { id = session.MaUser})">
                                 <small>@session.TenUser</small>
                                 <i class="fa fa-fw fa-user text-dark mr-3"></i>
                             </a>
-
+                            @Html.ActionLink("Đăng xuất", "Logout", "Login", new { @style = "color:#ff0000" })
                         }
                         else
                         {

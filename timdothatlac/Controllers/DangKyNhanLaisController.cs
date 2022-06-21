@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ModalEF.EF;
+using timdothatlac.Common;
 
 namespace timdothatlac.Controllers
 {
@@ -47,6 +48,12 @@ namespace timdothatlac.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Logout()
+        {
+            Session[Constant.USER_SESSION] = null;
+            return RedirectToAction("Index", "Login", routeValues: new { Area = "" });
         }
     }
 }
