@@ -138,6 +138,7 @@
     <Compile Include="Areas\Admin\Controllers\DangKyNhanLaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeDashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuyenController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -433,11 +434,9 @@
     <Content Include="Areas\Admin\Views\DanhMuc\Create.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMuc\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMuc\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\DangKyNhanLai\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\DangKyNhanLai\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DangKyNhanLai\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\DangKyNhanLai\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DangKyNhanLai\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DangKyNhanLai\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Quyen\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
