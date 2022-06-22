@@ -16,6 +16,7 @@ namespace ModalEF.EF
 
         public int? MaTaiKhoan { get; set; }
 
+        [Required]
         [StringLength(300)]
         public string LoiNhan { get; set; }
 
