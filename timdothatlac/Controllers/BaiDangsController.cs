@@ -13,7 +13,7 @@ using timdothatlac.Common;
 
 namespace timdothatlac.Controllers
 {
-    public class BaiDangsController : BaseController
+    public class BaiDangsController : Controller
     {
         private ContextDB db = new ContextDB();
         public AnhDinhKem adk = new AnhDinhKem();

@@ -11,7 +11,7 @@ using timdothatlac.Common;
 
 namespace timdothatlac.Controllers
 {
-    public class DangKyNhanLaisController : Controller
+    public class DangKyNhanLaisController : BaseController
     {
         private ContextDB db = new ContextDB();
 
